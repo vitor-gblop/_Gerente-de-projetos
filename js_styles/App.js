@@ -11,30 +11,45 @@ class Projeto
     }
 }
 
-const c1 = new Projeto("teste 1", "um teste de objetos", ["15:30", "23:00"], ["20:00", "01:00"])
-const c2 = new Projeto("teste 2", "um teste da lista", ["13:15", "14:00"], ["17:00", "17:00"])
+// variaveis
 
-let actual_list = c1;
+let vazio = true;
+let obj = null;
 let project_time_spent = 0.0;
 
-let list = [
-    c1,
-    c2
-];
+let list = [];
+let actual_list;
 
 
-function createProject()
+
+let json = '{"projetos" : ['+
+'{"nome":"teste 1","desc":"um teste de objetos", "entrada":["15:30", "23:00"], "saida":["20:00", "01:00"], "logs":[] },'+
+'{"nome":"teste 2","desc":"um teste da lista", "entrada":["13:15", "14:00"], "saida":["17:00", "17:00"], "logs":[] },'+
+'{"nome":"teste 3", "desc":"localstorage", "entrada":["15:30"], "saida":["20:00"], "logs":[] }'+
+']}';
+// let obj = JSON.parse(json);
+
+
+function CriaProjeto()
 {
     let nome_projeto = document.getElementById("project_name").value
     let desc_projeto = document.getElementById("project_desc").value
-    let entrada = [] //"00:00"
-    let saida =  [] //"00:00"
+    let entradas = [] //"00:00"
+    let saidas =  [] //"00:00"
 
-    list.push(new Projeto(nome_projeto, desc_projeto, entrada, saida))
+    // let pj = new Projeto(nome_projeto, desc_projeto, entradas, saidas);
+    // list.push(pj)
+    
+    obj.projetos.push({nome:nome_projeto,desc:desc_projeto, entrada:entradas, saida:saidas})
+    
     console.table(list)
+    console.table(obj)
 
     // lista.innerHTML = list.map(item => `<li> ${item.nome} </li>`).join("")
     createVisualProject(nome_projeto)
+
+    armazenarDados(obj)
+    location.reload()
 }
 
 function createVisualProject(nome)
@@ -49,40 +64,85 @@ function createVisualProject(nome)
     nw.setAttribute("onclick", "carregar_informacao()");
 }
 
+// remove o ultimo elemento da lista e remove da exibição tambem
+// recarrega a pagina sempre que chamada
 function removeProject() 
 {
-    list.pop()
-    
-    let arr = document.getElementsByClassName("prj")
-    arr[arr.length-1].remove()
+    if (obj.projetos.length != 0)
+    {
+        list.pop()
+        obj.projetos.pop()
+        
+        let arr = document.getElementsByClassName("prj")
+        arr[arr.length-1].remove()
 
-    // let lista = document.getElementById("lista")
-    // lista.innerHTML = list.map(item => `<li> ${item.nome} </li>`).join("")
+        localStorage.setItem("pjs",JSON.stringify(obj))
+        location.reload()
+    }
+    
+}
+
+
+
+
+
+
+// carrega a exibição dos projetos e prenche a lista com objetos da classe projeto
+function carregarProjetos()
+{
+    if (obj != null)
+    {
+        obj.projetos.forEach(item => 
+        {
+            // novos objetos
+            let x = new Projeto(item.nome, item.desc, item.entrada, item.saida);
+            list.push(x);
+
+            console.log(x);
+            createVisualProject(item.nome)
+        })
+        actual_list = list[0];
+    }
+}
+
+function armazenarDados(obj)
+{
+    localStorage.setItem("pjs",JSON.stringify(obj))
+    console.log(localStorage.getItem("pjs"))
 }
 
 let nm = "";
 let indice = 0
+// carrega as informações contidas em cada elemento da lista para a tela de exibição
 function carregar_informacao()
 {
-    for (let i = 0; i  < list.length; i++) {
-        if (nm == list[i].nome)
-        {
-            actual_list = list[i];
-            indice = i;
+    if (list.length != 0)
+    {
+        for (let i = 0; i  < list.length; i++) {
+            if (nm == list[i].nome)
+            {
+                actual_list = list[i];
+                indice = i;
+            }
         }
+
+        entrada(indice)
+        saida(indice)
+
+        let x = document.getElementById("info_project_name")
+        let y = document.getElementById("project_description")
+
+        x.innerHTML = list[indice].nome
+        y.innerHTML = list[indice].descricao
     }
+    else
+    {
+        let x = document.getElementById("info_project_name")
+        let y = document.getElementById("project_description")
 
-    // console.log("--", nm)
-    // console.log("--", indice)
-
-    entrada(indice)
-    saida(indice)
-
-    let x = document.getElementById("info_project_name")
-    let y = document.getElementById("project_description")
-
-    x.innerHTML = list[indice].nome
-    y.innerHTML = list[indice].descricao
+        x.innerHTML = "Nome do projeto"
+        y.innerHTML = "Descrição do projeto"
+    }
 }
 
 function entrada(i) {
@@ -113,6 +173,11 @@ function saida(i) {
     
 }
 
+
+
+
+
+// ========================================
 function debug()
 {
     entrada(indice)
@@ -121,14 +186,18 @@ function debug()
 
 function showEntryInput(t)
 {
-    let x = document.getElementById("in_input_div")
-    let y = document.getElementById("out_input_div")
+    let x = document.getElementById("in_input_div");
+    let y = document.getElementById("out_input_div");
 
     if (t == 1)
         x.style.display = "flex";
     else
         y.style.display = "flex";
 }
+// =========================================
+
+
+
 
 function addInHour(t)
 {
@@ -148,9 +217,11 @@ function addInHour(t)
         
         if(result && t == 1)
         {
-            list[indice].entradas.push(x.value);
             xx.style.display = "none";
             x.style.borderColor = '#000000';
+
+            obj.projetos[indice].entrada.push(x.value);
+            localStorage.setItem("pjs",JSON.stringify(obj));
         }
         else
         {
@@ -159,15 +230,17 @@ function addInHour(t)
     }
     else
     {
-        // if (actual_list.entradas.lastIndexOf())
         let result = re.test(y.value);
 
         if(result && t != 1)
         {
-            
-            list[indice].saidas.push(y.value);
             yy.style.display = "none";
             y.style.borderColor = '#000000';
+
+            obj.projetos[indice].saida.push(y.value);
+            localStorage.setItem("pjs",JSON.stringify(obj));
+
+            location.reload();
         }
         else
         {
@@ -175,10 +248,9 @@ function addInHour(t)
         }
     }
 
-    console.table(c1.entradas)
+    console.table(obj.projetos[indice].entrada)
     carregar_informacao()
 }
-
 
 
 
@@ -186,6 +258,7 @@ function time_manager()
 {
     let ts = document.getElementById("time_spent");
 
+    console.log(actual_list.entradas)
     let time_in = [];
     actual_list.entradas.forEach(item => {
         let ax_a = item.split(":");
@@ -222,23 +295,41 @@ function time_manager()
            console.log("--" , time_);
         }
 
-       ts.innerHTML =  time_;
+        ts.innerHTML =  time_;
     }
-    // console.table(time_in);
-    // console.table(time_out)
-
-    // ts.innerHTML = project_time_spent
 }
 
+
+
+function MostrarAbaProjetos()
+{
+    document.getElementById("hidden_NP_div").style.display = "block";
+}
+
+
+
+
+
 // ---------------------------------------------------------------
+
 (function()
 {
+    if (localStorage.getItem("pjs") != null)
+    {
+        obj = JSON.parse(localStorage.getItem("pjs"));
+    }
+    else
+    {
+        let ax_json = '{ "projetos" : [] }'
+        obj = JSON.parse(ax_json)
+    }
+    
+    carregarProjetos()
     carregar_informacao()
-    list.forEach(item => {
-        createVisualProject(item.nome)
-    });
     time_manager()
-})();
 
+    // localStorage.clear()
+    // localStorage.setItem("pjs",JSON.stringify(obj))
+    // console.log(localStorage.getItem("pjs"))
+})();
 document.getElementById("inner_lower_div").addEventListener('click', (e) => {nm = e.target.innerHTML})
-// console.log(e.target.innerHTML)

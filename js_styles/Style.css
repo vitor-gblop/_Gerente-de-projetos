@@ -9,6 +9,12 @@
    --visualizacao_projeto: #83a435;
    --visualizacao_projeto_hover: #69842a;
 
+   --escala_1: #ebebeb;
+   --escala_2: #242424;
+   --escala_c1: #cebe78;
+   --escala_c2: #c7b753;
+   
+
    --fundo_monocromatico: #f7f7f7;
 }
 body
@@ -17,59 +23,101 @@ body
 }
 section
 {
-   margin: auto;
+   margin: 20px auto auto auto;
    background-color: var(--fundo_projeto);
    width: 400px;
 
    padding: 10px;
-   border-radius: 0px 0px 10px 10px;
+   border-radius: 10px 10px 10px 10px;
  }
- label
- {
+footer
+{
+   margin-top: 10px;
+   justify-content: center;
+   display: flex;
+   gap: 15px;
+}
+
+span
+{
+   margin-top: 5px;
    display: inline-flex;
    width: 150px;
- }
+}
 
  #header_options
  {
-   margin: auto;
+   margin: 5px auto auto auto;
    background-color: var(--fundo_projeto);
    width: 400px;
 
-   padding: 10px;
-   border-radius: 10px 10px 0px 0px;
+   /* padding: 10px; */
+   border-radius: 10px 10px 10px 10px;
 
    display: flex;
-   justify-content: space-around;
+   justify-content: space-between;
  }
- #dropdown_icon
+ #dropdown_head
  {
-   background-color: #ebebeb;
+   width: fit-content;
+
+   background-color: var(--escala_1); /*<<*/
+   padding: 4px;
+   border-radius: 5px;
+ }
+ #dropdown_div
+ {
+   width: fit-content;
+
+   position: relative;
+   right: -19em;
+
+   background-color: var(--escala_1); /*<<*/
    padding: 4px;
    border-radius: 5px;
  }
 
  #dropdown_menu
  {
+   border-radius: 10px;
    position: absolute;
    display: none;
    
-   background-color: #3b3b3b;
+   background-color: var(--escala_2); /*<<*/
+   z-index: 5;
+ }
+ #dropdown_div_menu
+ {
+   width: 7.5em;
+   border-radius: 10px;
+
+   position: absolute;
+   display: none;
+   
+   background-color: var(--escala_2); /*<<*/
+   z-index: 5;
  }
  #dropdown_item
  {
    margin-top: 7px;
    text-decoration: none;
-   color: antiquewhite;
-   background-color: #393939;
+   color: rgb(241, 239, 235);
+   background-color: var(--escala_2);  /*<<*/
    padding: 5px;
+
+   border-bottom: 1px solid var(--escala_1);;
  }
 
-  #dropdown_icon:hover #dropdown_menu
- {
+#dropdown_head:hover #dropdown_menu
+{
    display: flex;
    flex-direction: column;
- }
+}
+#dropdown_div:hover #dropdown_div_menu
+{
+   display: flex;
+   flex-direction: column;
+}
 
  
 #outter_upper_div
@@ -92,14 +140,25 @@ section
 {
    display: flex;
    justify-content: space-around;
+
+   padding-bottom: 5px;
+   border-bottom: 1px solid gray;
+   border-top: 1px solid gray;
 }
+
 #add_in_add_out_div
 {
    margin: 8px auto auto auto;
    padding: 2px;
-   width: fit-content;
+   width: 70%;
    background-color: var(--fundo_projeto);
+
+   /* display: none; */
+    display: flex;
+    justify-content: space-between;
 }
+
+
 #in_input_div
 {
    display: none;
@@ -109,29 +168,40 @@ section
    display: none;
 }
 
-
+/* =================================================================== */
 #outter_lower_div
 {
-margin: auto auto 20px auto;
+   /* height: auto; */
 
-/* width: 400px; */
-height: auto;
+   width: 90%;
+   margin: 20px auto 20px auto;
+
+   background-color: var(--fundo_monocromatico);
+
+   padding: 10px;
+   border-radius: 10px;
 }
+
 #inner_lower_div
 {
    margin: 20px auto 30px auto;
    width: 90%;
-   background-color: #ffffff;
+   /* background-color: #ffffff; */
 }
 
+#hidden_NP_div
+{
+   display: none;
+}
+/* =================================================================== */
 #outter_lower_new_project_div
 {
+   width: 92%;
    margin: auto;
 
-   /* width: 400px; */
    background-color: var(--fundo_monocromatico);
 
-   padding: 5px;
+   padding: 10px;
    border-radius: 10px;
 }
 
@@ -139,12 +209,14 @@ height: auto;
 {
    padding: 10px 0px 10px 10px;
    margin-top: 2px;
-   background-color: var(--visualizacao_projeto);
+   background-color: var(--escala_c1);
    
-   border-right: 2px solid black;
-   border-left: 2px solid black;
+   border-right: 2px solid #5f5f5f;
+   border-left: 2px solid #5f5f5f;
+
+   transition: 0.5s;
 }
 #project_b:hover
 {
-   background-color: var(--visualizacao_projeto_hover);  
+   background-color: var(--escala_c2); 
 }

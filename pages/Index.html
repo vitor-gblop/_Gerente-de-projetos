@@ -12,25 +12,38 @@
         
     </style>
     <header>
-        <div id="header_options">
-            <h2>
-                Gerente de Projetos
-            </h2>
-            <div id="dropdown_icon">
-                opcoes
-                <div id="dropdown_menu">
-                    <a href="Duvidas.html" id="dropdown_item">Duvidas</a>
-                    <a href="#dropdown_menu" id="dropdown_item">item 1</a>
-                    <button id="dropdown_item">item 2</button>
+        
+    </header>
+
+    <section>
+        <div id="outter_upper_div">
+            <div id="header_options">
+                <h2>
+                    Gerente de Projetos
+                </h2>
+                <div id="dropdown_head">
+                    opcoes
+                    <div id="dropdown_menu">
+                        <a href="#dropdown_menu" id="dropdown_item" onclick="MostrarAbaProjetos()">Adicionar Novo Projeto</a>
+                        <a href="#dropdown_menu" id="dropdown_item" onclick="removeProject()">Remover Ultimo Projeto</a>
+                        <a href="#dropdown_menu" id="dropdown_item" onclick="">Baixar Todos os Projetos</a>
+                        
+                    </div>
                 </div>
             </div>
             
-        </div>
-        
-    </header>
-    <section>
-        <div id="outter_upper_div">
-            <div id="inner_upper_info_div">
+            <div id="inner_upper_info_div"> 
+                    
+                <div id="dropdown_div">
+                    opcoes
+                    <div id="dropdown_div_menu">
+                        <a href="#dropdown_menu" id="dropdown_item" onclick="showEntryInput(1)">Adicionar Horas</a>
+                        <a href="#dropdown_menu" id="dropdown_item" onclick="showEntryInput(2)">Adicionar Saida</a>
+                        <!-- <a href="#dropdown_menu" id="dropdown_item" onclick="removeProjeto()">remover projeto</a> -->
+                        
+                    </div>
+                </div>
+
                 <h3 id="info_project_name"> Nome </h3>
                 <p id="project_description"> Descrição</p>
                 <br>
@@ -59,12 +72,12 @@
                 </div>
                 <br>
                 <div id="in_input_div">
-                    <label for="">hora de entrada</label>
+                    <span>Hora de entrada</span>
                     <input type="time" placeholder="ex: 12:00" id="in_input">
                     <button onclick="addInHour(1)">enviar</button>
                 </div>
                 <div id="out_input_div">
-                    <label for="">hora de saída</label>
+                    <span>Hora de saida</span>
                     <input type="time" placeholder="ex: 18:00" id="out_input">
                     <button onclick="addInHour(2)">enviar</button>
                 </div>
@@ -87,23 +100,26 @@
             </div>
         </div>
         <div id="outter_lower_new_project_div">
-            <h2>Novo projeto</h2>
-            <br>
-            <label for="project_name">Nome do projeto </label>
-            <input type="text" name="project_name" id="project_name" placeholder="Nome do projeto">
-            <br>
-            <label for="project_desc">descrição do projeto </label>
-            <input type="text" name="project_desc" id="project_desc" placeholder="Descrição do projeto">
+            <div id="hidden_NP_div">
+                <h2>Novo projeto</h2>
+                <br>
+                <span>Nome do projeto</span>
+                <input type="text" name="project_title" id="project_name" placeholder="Nome do projeto">
+                <br>
+                <span>Descrição do projeto</span>
+                <input type="text" name="project_desk" id="project_desc" placeholder="Descrição do projeto">
 
-            <br>
-            <br>
-            <button id="create_project" onclick="createProject()">Criar projeto</button>
-    
-            <button id="remove_project" onclick="removeProject()">Remover projeto</button>
+                <br>
+                <br>
+                <button id="create_project" onclick="CriaProjeto()">Criar projeto</button>
+                <!-- <button id="remove_project" onclick="removeProjeto()">Remover projeto</button> -->
+            </div>
+        
         </div>
     </section>
     <footer>
-
+        <p>made by Vitor Gabriel</p>
+        <a href="Duvidas.html" >Duvidas</a>
     </footer>
 
     <script src="../js_styles/App.js"></script>
