@@ -1,0 +1,150 @@
+*{
+    margin: 0;
+ }
+:root
+{
+   --fundo_projeto: #cccccc;
+   --info_projeto: #ff6347;
+   --lista_projeto: #00ff6a;
+   --visualizacao_projeto: #83a435;
+   --visualizacao_projeto_hover: #69842a;
+
+   --fundo_monocromatico: #f7f7f7;
+}
+body
+{
+   background-color: #f4f4f4;
+}
+section
+{
+   margin: auto;
+   background-color: var(--fundo_projeto);
+   width: 400px;
+
+   padding: 10px;
+   border-radius: 0px 0px 10px 10px;
+ }
+ label
+ {
+   display: inline-flex;
+   width: 150px;
+ }
+
+ #header_options
+ {
+   margin: auto;
+   background-color: var(--fundo_projeto);
+   width: 400px;
+
+   padding: 10px;
+   border-radius: 10px 10px 0px 0px;
+
+   display: flex;
+   justify-content: space-around;
+ }
+ #dropdown_icon
+ {
+   background-color: #ebebeb;
+   padding: 4px;
+   border-radius: 5px;
+ }
+
+ #dropdown_menu
+ {
+   position: absolute;
+   display: none;
+   
+   background-color: #3b3b3b;
+ }
+ #dropdown_item
+ {
+   margin-top: 7px;
+   text-decoration: none;
+   color: antiquewhite;
+   background-color: #393939;
+   padding: 5px;
+ }
+
+  #dropdown_icon:hover #dropdown_menu
+ {
+   display: flex;
+   flex-direction: column;
+ }
+
+ 
+#outter_upper_div
+ {
+    margin: auto;
+    
+   /* width: 400px; */
+   height: auto;
+ }
+#inner_upper_info_div
+{
+   margin: 20px auto auto auto;
+   
+   width: 90%;
+   padding: 10px;
+   background-color: var(--fundo_monocromatico);
+   border-radius: 10px;
+}
+#in_and_out_div
+{
+   display: flex;
+   justify-content: space-around;
+}
+#add_in_add_out_div
+{
+   margin: 8px auto auto auto;
+   padding: 2px;
+   width: fit-content;
+   background-color: var(--fundo_projeto);
+}
+#in_input_div
+{
+   display: none;
+}
+#out_input_div
+{
+   display: none;
+}
+
+
+#outter_lower_div
+{
+margin: auto auto 20px auto;
+
+/* width: 400px; */
+height: auto;
+}
+#inner_lower_div
+{
+   margin: 20px auto 30px auto;
+   width: 90%;
+   background-color: #ffffff;
+}
+
+#outter_lower_new_project_div
+{
+   margin: auto;
+
+   /* width: 400px; */
+   background-color: var(--fundo_monocromatico);
+
+   padding: 5px;
+   border-radius: 10px;
+}
+
+#project_b
+{
+   padding: 10px 0px 10px 10px;
+   margin-top: 2px;
+   background-color: var(--visualizacao_projeto);
+   
+   border-right: 2px solid black;
+   border-left: 2px solid black;
+}
+#project_b:hover
+{
+   background-color: var(--visualizacao_projeto_hover);  
+}

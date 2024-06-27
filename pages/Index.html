@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerente de projeto</title>
+
+    <link rel="stylesheet" href="../js_styles/Style.css">
+</head>
+<body>
+    <style>
+        
+    </style>
+    <header>
+        <div id="header_options">
+            <h2>
+                Gerente de Projetos
+            </h2>
+            <div id="dropdown_icon">
+                opcoes
+                <div id="dropdown_menu">
+                    <a href="Duvidas.html" id="dropdown_item">Duvidas</a>
+                    <a href="#dropdown_menu" id="dropdown_item">item 1</a>
+                    <button id="dropdown_item">item 2</button>
+                </div>
+            </div>
+            
+        </div>
+        
+    </header>
+    <section>
+        <div id="outter_upper_div">
+            <div id="inner_upper_info_div">
+                <h3 id="info_project_name"> Nome </h3>
+                <p id="project_description"> Descrição</p>
+                <br>
+                <div id="in_and_out_div">
+                    <div>
+                        entradas
+                        <ul reversed id="ul_entrada" >
+                            <li>00:00</li>
+                            <li>00:00</li>
+                        </ul>
+                    </div>
+                    <div>
+                        saidas
+                        <ul reversed id="ul_saida">
+                            <li>00:00</li>
+                            <li>00:00</li>
+                        </ul>
+                    </div>
+                    
+                    
+                </div>
+                <div id="add_in_add_out_div">
+                    <button  onclick="showEntryInput(1)">adicionar entrada</button>
+                    <button onclick="showEntryInput(2)">adicionar saída</button>
+                    
+                </div>
+                <br>
+                <div id="in_input_div">
+                    <label for="">hora de entrada</label>
+                    <input type="time" placeholder="ex: 12:00" id="in_input">
+                    <button onclick="addInHour(1)">enviar</button>
+                </div>
+                <div id="out_input_div">
+                    <label for="">hora de saída</label>
+                    <input type="time" placeholder="ex: 18:00" id="out_input">
+                    <button onclick="addInHour(2)">enviar</button>
+                </div>
+               
+                <br>
+                <h3>Horas gastas</h3>
+                <p id="time_spent">00:00</p>
+
+            </div>
+        </div>
+        <div id="outter_lower_div">
+            <br>
+            <h2>
+                Projetos
+            </h2>
+            <div id="inner_lower_div">
+                <!-- <ul id="lista">
+                    <li>dfghjk</li>
+                </ul> -->
+            </div>
+        </div>
+        <div id="outter_lower_new_project_div">
+            <h2>Novo projeto</h2>
+            <br>
+            <label for="project_name">Nome do projeto </label>
+            <input type="text" name="project_name" id="project_name" placeholder="Nome do projeto">
+            <br>
+            <label for="project_desc">descrição do projeto </label>
+            <input type="text" name="project_desc" id="project_desc" placeholder="Descrição do projeto">
+
+            <br>
+            <br>
+            <button id="create_project" onclick="createProject()">Criar projeto</button>
+    
+            <button id="remove_project" onclick="removeProject()">Remover projeto</button>
+        </div>
+    </section>
+    <footer>
+
+    </footer>
+
+    <script src="../js_styles/App.js"></script>
+</body>
+</html>
