@@ -24,27 +24,24 @@
     top: 1em;
     left: 20em;
 
-
     width: fit-content;
 }
 
 .dropdown_menu {
     background-color: var(--escala_2);
     z-index: 5;
+
+    border-radius: 10px;
+    position: absolute;
+    display: none;
 }
 
 #info_menu {
-    width: 8em;
-    border-radius: 10px;
-    position: absolute;
-    display: none;
+    width: 11em;
 }
 
 #mid_menu {
-    width: 12em;
-    border-radius: 10px;
-    position: absolute;
-    display: none;
+    width: 15em;
 }
 
 .dropdown_item {

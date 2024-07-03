@@ -30,7 +30,11 @@
                         opcoes
                         <div id="info_menu" class="dropdown_menu">
                             <a href="#dropdown_menu" class="dropdown_item" onclick="showEntryInput(1)">Adicionar Horas</a>
+
                             <a href="#dropdown_menu" class="dropdown_item" onclick="showEntryInput(2)">Adicionar Saida</a>
+                            
+                            <a href="#dropdown_menu" id="downloadIndex_item" class="dropdown_item" onclick="DownloadIndexFile()">Baixar Projeto</a>
+
                             <!-- <a href="#dropdown_menu" class="dropdown_item" onclick="removeProjeto()">remover projeto</a> -->
                     
                         </div>
@@ -40,14 +44,14 @@
                     <br>
                     <div id="in_and_out_div">
                         <div>
-                            Entradas
+                            <b style="font-style: oblique;">Entradas</b>
                             <ul id="ul_entrada">
                                 <li>00:00</li>
                                 <li>00:00</li>
                             </ul>
                         </div>
                         <div>
-                            Saidas
+                            <b style="font-style: oblique;">Saidas</b>
                             <ul id="ul_saida">
                                 <li>00:00</li>
                                 <li>00:00</li>
@@ -64,7 +68,7 @@
                     <br>
                     <div id="in_input_div">
                         <span>Hora de entrada</span>
-                        <input type="time" placeholder="ex: 12:00" id="in_input">
+                        <input type="time" placeholder="ex: 12:00" value="" id="in_input">
                         <button onclick="addInHour(1)">enviar</button>
                     </div>
                     <div id="out_input_div">
@@ -74,7 +78,7 @@
                     </div>
                     <br>
                     <div>
-                        <span>Logs do Projeto:</span>
+                        <span style="font-style: oblique;"><b>Logs do Projeto:</b></span>
                         <ol id="ul_log" >
 
                         </ol>
@@ -99,9 +103,11 @@
 
                 <a href="#log_area" id="LG_item" class="dropdown_item" onclick="MostrarAbaNovoLog()">Adicionar Novo Log</a>
 
-                <a href="#dropdown_menu" class="dropdown_item" onclick="removeProject()">Remover Ultimo Projeto</a>
+                <a href="#dropdown_menu" class="dropdown_item" onclick="RemoveProject()">Remover Ultimo Projeto</a>
 
-                <a href="#dropdown_menu" class="dropdown_item" onclick="">Baixar Todos os Projetos</a>
+                <a href="#dropdown_menu" id="download_item" class="dropdown_item" onclick="DownloadFiles()">Baixar Todos os Projetos</a>
+
+                <a href="#dropdown_menu" id="F_item" class="dropdown_item" onclick="MostrarAbaFiles()">Carregar Novos Projetos</a>
                 
             </div>
         </div>
@@ -117,6 +123,17 @@
                     </ul> -->
                 </div>
             </div>
+
+            <div id="hidden_F_div">
+                <span>Adicionar projetos: </span>
+                <div id="input_file_div">
+                    <input type="file" name="file_input" id="file_receiver" accept=".json" onchange="ReceiveFiles()">
+                    <span for="file_input" id="file_label">carregar projetos</span>
+                </div>
+                <br>
+                <button id="add_file_button" disabled onclick="SubmitFiles()">adicionar</button>
+            </div>
+
         </div>
         <div id="outter_lower_new_project_div">
             <div id="hidden_NP_div">

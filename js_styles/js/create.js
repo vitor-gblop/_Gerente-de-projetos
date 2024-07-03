@@ -21,7 +21,9 @@ let obj = null;
 let project_time_spent = 0.0;
 
 let list = [];
-let actual_list;
+let actual_list = new Projeto("Any", "Any", [], [], []);
+
+let input_files_top
 
 
 let json = '{"projetos" : ['+
@@ -90,7 +92,7 @@ function carregarProjetos()
             console.log(x);
             createVisualProject(item.nome)
         })
-        actual_list = list[0];
+        // actual_list = list[0];
     }
 }
 
@@ -150,42 +152,45 @@ function time_manager()
     let ts = document.getElementById("time_spent");
 
     let time_in = [];
-    actual_list.entradas.forEach(item => {
-        let ax_a = item.split(":");
-        let ax_b = parseInt(ax_a[0]);
-
-        time_in.push(ax_b);
-        console.log(ax_b)
-    });
-
-    let time_out = [];
-    actual_list.saidas.forEach(item => {
-        let ax_a = item.split(":");
-        let ax_b = parseInt(ax_a[0]);
-
-        time_out.push(ax_b);
-        console.log(ax_b)
-    });
-
-    if (time_out.length > 0) 
+    if (actual_list.entradas)
     {
-        let time_ = 0;
-        for (let i = 0; i < time_out.length; i++) 
-        {
-            if (time_in[i] < time_out[i])
-            {
-                time_ += (time_out[i] - time_in[i]);
-                
-            }
-            else
-            {
-                time_ += 24 - time_in[i]; 
-                time_ += time_out[i];
-            }
-           console.log("--" , time_);
-        }
+        actual_list.entradas.forEach(item => {
+            let ax_a = item.split(":");
+            let ax_b = parseInt(ax_a[0]);
 
-        ts.innerHTML =  time_;
+            time_in.push(ax_b);
+            console.log(ax_b)
+        });
+
+        let time_out = [];
+        actual_list.saidas.forEach(item => {
+            let ax_a = item.split(":");
+            let ax_b = parseInt(ax_a[0]);
+
+            time_out.push(ax_b);
+            console.log(ax_b)
+        });
+
+        if (time_out.length > 0) 
+        {
+            let time_ = 0;
+            for (let i = 0; i < time_out.length; i++) 
+            {
+                if (time_in[i] < time_out[i])
+                {
+                    time_ += (time_out[i] - time_in[i]);
+                    
+                }
+                else
+                {
+                    time_ += 24 - time_in[i]; 
+                    time_ += time_out[i];
+                }
+            console.log("--" , time_);
+            }
+
+            ts.innerHTML =  time_;
+        }
     }
 }
 
@@ -225,9 +230,16 @@ function carregar_informacao()
     {
         let x = document.getElementById("info_project_name")
         let y = document.getElementById("project_description")
+        let entradas = document.getElementById("ul_entrada")
+        let saidas = document.getElementById("ul_saida")
+        let logs = document.getElementById("ul_log")
 
         x.innerHTML = "Nome do projeto"
         y.innerHTML = "Descrição do projeto"
+
+        entradas.innerHTML = " -- "
+        saidas.innerHTML = " -- "
+        logs.innerHTML = "Nenhum log registrado"
     }
 }
 

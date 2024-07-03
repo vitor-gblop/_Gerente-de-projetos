@@ -1,4 +1,5 @@
 *{
+   font-family: monospace;
     margin: 0;
  }
 :root
@@ -151,4 +152,9 @@ span
 #project_b:hover
 {
    background-color: var(--escala_c2); 
+}
+
+#hr_line
+{
+    margin: 7px 0 7px 0;
 }

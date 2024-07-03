@@ -1,6 +1,6 @@
 // remove o ultimo elemento da lista e remove da exibição tambem
 // recarrega a pagina sempre que chamada
-function removeProject() 
+function RemoveProject() 
 {
     if (obj.projetos.length != 0)
     {
