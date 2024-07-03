@@ -174,3 +174,19 @@ function SubmitFiles()
     armazenarDados(obj)
     location.reload()
 }
+function nameDesc()
+{
+    let ax = document.getElementById("project_name");
+    let ay = document.getElementById("project_desc");
+
+    ay.disabled = true
+    ax.onchange = ()=>{
+        ay.disabled = false
+    }
+}
+
+(function()
+{
+    SubmitFilesOnEnter();
+    nameDesc();
+})();
