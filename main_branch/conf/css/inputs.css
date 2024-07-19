@@ -1,0 +1,43 @@
+#log_area
+{
+    width: 98%;
+    height: 5em;
+
+    max-width: 98%;
+}
+
+#hidden_F_div
+{
+   display: none;
+}
+#input_file_div
+{
+   background-color: #98f3fb82;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   
+   padding: 0.5rem;
+   border: #00000097 dotted 2px ;
+}
+#input_file_div:hover
+{
+   background-color: #8de2ea82;
+}
+#file_label
+{
+   color: rgba(0, 0, 0, 0.485);
+   border-radius: 10px;
+   padding: 0.5rem;
+}
+#file_receiver
+{
+   width: 20.9rem;
+   height: 1.9rem;
+   padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+
+   opacity: 0;
+   position: absolute;
+   
+   background-color: rebeccapurple;
+}
