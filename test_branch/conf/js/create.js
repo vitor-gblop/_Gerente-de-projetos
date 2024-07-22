@@ -19,15 +19,7 @@ function loadMapItens(text)
     }
     else
     {
-        let obj = JSON.parse("{'projetos':[]}");
-        obj.projetos.forEach(a => {
-            global_map.set(a.nome, a)
-        });
-
-        global_map.forEach(a =>{
-            loadPjElements(a.nome); // load.js
-            // console.log(a.nome);
-        })
+        localStorage.setItem("projetos", '{"projetos":[]}')
     }
     // global_obj.projetos.length
 }
