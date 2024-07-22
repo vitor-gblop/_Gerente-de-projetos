@@ -25,7 +25,7 @@ var global_obj = {"projetos" : [
 // FUNÇÔES
 
 // cria e carrega os elementos visuais e clicaveis dos projetos no programa 
-function loadPjElements(nome)
+function loadPjElements(nome) // create.js
 {
     let nw = document.createElement("div");
     
@@ -232,6 +232,38 @@ function downloadIndexFile(obj)
     }
 }
 
+// estetica - muda o nome de um span na hora do upload
+function loadFileName(fileName)
+{
+    document.getElementById("file_label").innerHTML = fileName;
+}
+function loadReceivedFiles(result)
+{
+    document.getElementById("add_file_button").disabled = false;
+    
+    let ref = global_map;
+    try
+    {
+        let obj = JSON.parse(result)
+
+        obj.projetos.forEach(e => {
+            console.log(e);
+            ref.set(e.nome, e);
+        });
+    }
+    catch(e)
+    {
+        console.error(e);
+    }       
+}
+
+function submitFiles()
+{
+    updateGlobalJson(allToObj(global_map));
+    location.reload();
+}
+
+
 function securityCheck()
 {
     if (global_name == "none")
@@ -278,37 +310,6 @@ function allToObj(map)
     }
 
     return obj;
-}
-
-// estetica - muda o nome de um span na hora do upload
-function loadFileName(fileName)
-{
-    document.getElementById("file_label").innerHTML = fileName;
-}
-function loadReceivedFiles(result)
-{
-    document.getElementById("add_file_button").disabled = false;
-    
-    let ref = global_map;
-    try
-    {
-        let obj = JSON.parse(result)
-
-        obj.projetos.forEach(e => {
-            console.log(e);
-            ref.set(e.nome, e);
-        });
-    }
-    catch(e)
-    {
-        console.error(e);
-    }       
-}
-
-function submitFiles()
-{
-    updateGlobalJson(allToObj(global_map));
-    location.reload();
 }
 // global_map.set("teste original", {"nome": ["eudes"]});
 // global_map.get("teste original").nome.push("cleia");

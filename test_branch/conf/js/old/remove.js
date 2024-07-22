@@ -13,5 +13,4 @@ function RemoveProject()
         localStorage.setItem("pjs",JSON.stringify(obj))
         location.reload()
     }
-    
 }

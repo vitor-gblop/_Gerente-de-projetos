@@ -2,9 +2,24 @@
 // carrega os itens da lista e cria os projetos de forma visivel
 function loadMapItens(text)
 {
-    let obj = JSON.parse(text);
-    if (obj.projetos.length != 0)
+    if (text != null)
     {
+        let obj = JSON.parse(text);
+        if (obj.projetos.length != 0)
+        {
+            obj.projetos.forEach(a => {
+                global_map.set(a.nome, a)
+            });
+
+            global_map.forEach(a =>{
+                loadPjElements(a.nome); // load.js
+                // console.log(a.nome);
+            })
+        }
+    }
+    else
+    {
+        let obj = JSON.parse("{'projetos':[]}");
         obj.projetos.forEach(a => {
             global_map.set(a.nome, a)
         });

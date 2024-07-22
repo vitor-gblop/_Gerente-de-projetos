@@ -14,3 +14,17 @@ function removeProject()
         location.reload();
     }
 }
+
+// deleta todos os projetos
+function removeAllProject() 
+{
+    let ref = global_map;
+    if (ref.size != 0)
+    {
+        // limpa o Map
+        ref.clear();
+        localStorage.clear();
+
+        location.reload();
+    }
+}
