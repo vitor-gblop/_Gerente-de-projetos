@@ -1,17 +1,16 @@
-// remove o ultimo elemento da lista e remove da exibição tambem
-// recarrega a pagina sempre que chamada
-function RemoveProject() 
-{
-    if (obj.projetos.length != 0)
-    {
-        list.pop()
-        obj.projetos.pop()
-        
-        let arr = document.getElementsByClassName("prj")
-        arr[arr.length-1].remove()
 
-        localStorage.setItem("pjs",JSON.stringify(obj))
-        location.reload()
+// deleta o projeto selecionado
+function removeProject() 
+{
+    let ref = global_map;
+    if (ref.size != 0)
+    {
+        // deleta o projeto
+        ref.delete(global_name);
+
+        let obj = allToObj(ref);
+        updateGlobalJson(obj);
+
+        location.reload();
     }
-    
 }
