@@ -1,4 +1,5 @@
 
+// le o conteudo recebido pelo input files
 function readFiles()
 {   
     let input = document.getElementById("file_receiver").files

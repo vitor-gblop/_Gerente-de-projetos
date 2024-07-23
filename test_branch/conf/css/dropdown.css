@@ -16,14 +16,13 @@
     width: fit-content;
 
     position: relative;
-    right: -19em;
+    left: 23em;
 }
 
 #mid_dropdown {
     position: relative;
     top: 1em;
-    left: 20em;
-
+    left: 25em;
     width: fit-content;
 }
 
@@ -33,6 +32,9 @@
 
     border-radius: 10px;
     position: absolute;
+    top: 0em;
+    left: 3.8em;
+
     display: none;
 }
 
@@ -69,10 +71,12 @@
 @media (max-width:600px)
 {
     #info_menu {
+        top: 2.2em;
         left: -80px;
     }
     
     #mid_menu {
+        top: 2.2em;
         left: -130px;
     }
 }

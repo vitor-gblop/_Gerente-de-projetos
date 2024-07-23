@@ -30,9 +30,15 @@
                     <div id="info_dropdown" class="dropdown_button">
                         opcoes
                         <div id="info_menu" class="dropdown_menu">
-                            <a href="#dropdown_menu" class="dropdown_item" onclick="showEntryInput(1)">Adicionar Horas</a>
+                            <a href="#dropdown_menu" class="dropdown_item" onclick="showHourInputs(1)">Adicionar Horas</a>
 
-                            <a href="#dropdown_menu" class="dropdown_item" onclick="showEntryInput(2)">Adicionar Saida</a>
+                            <a href="#dropdown_menu" class="dropdown_item" onclick="showHourInputs(2)">Adicionar Saida</a>
+                            
+                            <a href="#dropdown_menu" class="dropdown_item" onclick="updateProjectName()">Renomear Projeto</a> <!-- update-->
+                            
+                            <a href="#dropdown_menu" class="dropdown_item" onclick="updateProjectDesc()">Mudar Descrição</a> <!-- update-->
+                            
+                            <a href="#dropdown_menu" class="dropdown_item" onclick="updateProjectLog()">Atualizar Logs</a> <!-- update-->
                             
                             <a href="#dropdown_menu" id="downloadIndex_item" class="dropdown_item" onclick="downloadIndexFile()">Baixar Projeto</a>
 
@@ -72,12 +78,12 @@
                     <div id="in_input_div">
                         <span>Hora de entrada</span>
                         <input type="time" placeholder="ex: 12:00" value="" id="in_input">
-                        <button onclick="addInHour(1)">enviar</button>
+                        <button onclick="createHourRegistry(1)">enviar</button>
                     </div>
                     <div id="out_input_div">
                         <span>Hora de saida</span>
                         <input type="time" placeholder="ex: 18:00" id="out_input">
-                        <button onclick="addInHour(2)">enviar</button>
+                        <button onclick="createHourRegistry(2)">enviar</button>
                     </div>
                     <br>
                     <div>
@@ -86,6 +92,7 @@
 
                         </ol>
                     </div>
+                    <hr>
                     <br>
                     
                     <h3>Horas gastas</h3>
@@ -105,10 +112,10 @@
                 <a href="#hidden_NP_div" id="NP_item" class="dropdown_item" onclick="showAbaNovoProjeto()">Adicionar Novo Projeto</a>
 
                 <a href="#log_area" id="LG_item" class="dropdown_item" onclick="showAbaNovoLog()">Adicionar Novo Log</a>
+                
+                <a href="#dropdown_menu" id="F_item" class="dropdown_item" onclick="showAbaUploadFile()">Carregar Novos Projetos</a>
 
                 <a href="#dropdown_menu" id="download_item" class="dropdown_item" onclick="downloadAllFiles()">Baixar Todos os Projetos</a>
-
-                <a href="#dropdown_menu" id="F_item" class="dropdown_item" onclick="showAbaUploadFile()">Carregar Novos Projetos</a>
 
                 <a href="#dropdown_menu" id="DA_item" class="dropdown_item" onclick="removeAllProject()">Deletar Todos os Projetos</a>
                 

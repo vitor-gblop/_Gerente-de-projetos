@@ -56,8 +56,45 @@ function createNewLog()
     location.reload()
 }
 
-function createHourRegistry() {
-    
+function createHourRegistry(t) 
+{
+    let xy = document.getElementById("in_input_div");
+    let yz = document.getElementById("out_input_div");
+
+    let x = document.getElementById("in_input");
+    let y = document.getElementById("out_input");
+
+    let ref = global_map
+
+    if (t == 1 ) 
+    {
+       if (x.value != "")
+       {
+            xy.style.display = "none";
+            x.style.borderColor = '#000000';
+
+            ref.get(global_name).entrada.push(x.value);
+            let obj = allToObj(ref);
+
+            updateGlobalJson(obj);
+       }
+    }
+    else
+    {
+        if (y.value != "")
+        {
+            yz.style.display = "none";
+            y.style.borderColor = '#000000';
+
+            ref.get(global_name).saida.push(y.value);
+            let obj = allToObj(ref);
+
+            updateGlobalJson(obj);
+        }
+    }
+
+    console.log(ref.get(global_name).entrada);
+    location.reload();
 }
 
 
