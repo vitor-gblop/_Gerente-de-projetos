@@ -94,7 +94,7 @@ function createHourRegistry(t)
     }
 
     console.log(ref.get(global_name).entrada);
-    location.reload();
+    getInfo();
 }
 
 

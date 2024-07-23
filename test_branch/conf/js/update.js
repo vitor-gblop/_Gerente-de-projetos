@@ -55,7 +55,7 @@ function updateProjectLog()
             ref.get(global_name).logs[nIndex] = y;
             updateGlobalJson(allToObj(ref));
 
-            location.reload();
+            getInfo();
         }
     }
 }

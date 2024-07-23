@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerente de projeto</title>
 
-    <link rel="stylesheet" href="../js_styles/style/general.css">
-    <link rel="stylesheet" href="../js_styles/style/dropdown.css">
-    <link rel="stylesheet" href="../js_styles/style/inputs.css">
+    <div>
+        <link rel="stylesheet" href="../conf/css/general.css">
+        <link rel="stylesheet" href="../conf/css/inputs.css">
+        <link rel="stylesheet" href="../conf/css/dropdown.css">
+    </div>
+    <script src="../conf/js/load.js"></script>
+    <script src="../conf/js/update.js"></script>
 </head>
 <body>
-    <style>
-        
-    </style>
     <header>
         
     </header>
@@ -29,11 +30,19 @@
                     <div id="info_dropdown" class="dropdown_button">
                         opcoes
                         <div id="info_menu" class="dropdown_menu">
-                            <a href="#dropdown_menu" class="dropdown_item" onclick="showEntryInput(1)">Adicionar Horas</a>
+                            <a href="#dropdown_menu" class="dropdown_item" onclick="showHourInputs(1)">Adicionar Horas</a>
 
-                            <a href="#dropdown_menu" class="dropdown_item" onclick="showEntryInput(2)">Adicionar Saida</a>
+                            <a href="#dropdown_menu" class="dropdown_item" onclick="showHourInputs(2)">Adicionar Saida</a>
                             
-                            <a href="#dropdown_menu" id="downloadIndex_item" class="dropdown_item" onclick="DownloadIndexFile()">Baixar Projeto</a>
+                            <a href="#dropdown_menu" class="dropdown_item" onclick="updateProjectName()">Renomear Projeto</a> <!-- update-->
+                            
+                            <a href="#dropdown_menu" class="dropdown_item" onclick="updateProjectDesc()">Mudar Descrição</a> <!-- update-->
+                            
+                            <a href="#dropdown_menu" class="dropdown_item" onclick="updateProjectLog()">Atualizar Logs</a> <!-- update-->
+                            
+                            <a href="#dropdown_menu" id="downloadIndex_item" class="dropdown_item" onclick="downloadIndexFile()">Baixar Projeto</a>
+
+                            <a href="#dropdown_menu" id="remove_item" class="dropdown_item" onclick="removeProject()">Deletar Projeto</a>
 
                             <!-- <a href="#dropdown_menu" class="dropdown_item" onclick="removeProjeto()">remover projeto</a> -->
                     
@@ -61,20 +70,20 @@
                     
                     </div>
                     <div id="add_in_add_out_div">
-                        <button  onclick="showEntryInput(1)">adicionar entrada</button>
-                        <button onclick="showEntryInput(2)">adicionar saída</button>
+                        <button id="inH"  onclick="showHourInputs(1)">adicionar entrada</button>
+                        <button id="outH" onclick="showHourInputs(2)">adicionar saída</button>
                     
                     </div>
                     <br>
                     <div id="in_input_div">
                         <span>Hora de entrada</span>
                         <input type="time" placeholder="ex: 12:00" value="" id="in_input">
-                        <button onclick="addInHour(1)">enviar</button>
+                        <button onclick="createHourRegistry(1)">enviar</button>
                     </div>
                     <div id="out_input_div">
                         <span>Hora de saida</span>
                         <input type="time" placeholder="ex: 18:00" id="out_input">
-                        <button onclick="addInHour(2)">enviar</button>
+                        <button onclick="createHourRegistry(2)">enviar</button>
                     </div>
                     <br>
                     <div>
@@ -83,6 +92,7 @@
 
                         </ol>
                     </div>
+                    <hr>
                     <br>
                     
                     <h3>Horas gastas</h3>
@@ -97,17 +107,17 @@
         <div id="mid_dropdown" class="dropdown_button">
             opcoes
             <div id="mid_menu" class="dropdown_menu">
-                <a href="#hidden_PJ_div" id="PJ_item" class="dropdown_item" onclick="MostrarAbaProjetos()">Mostrar Aba Projetos</a>
+                <a href="#hidden_PJ_div" id="PJ_item" class="dropdown_item" onclick="showAbaProjetos()">Mostrar Aba Projetos</a>
 
-                <a href="#hidden_NP_div" id="NP_item" class="dropdown_item" onclick="MostrarAbaNovoProjetos()">Adicionar Novo Projeto</a>
+                <a href="#hidden_NP_div" id="NP_item" class="dropdown_item" onclick="showAbaNovoProjeto()">Adicionar Novo Projeto</a>
 
-                <a href="#log_area" id="LG_item" class="dropdown_item" onclick="MostrarAbaNovoLog()">Adicionar Novo Log</a>
+                <a href="#log_area" id="LG_item" class="dropdown_item" onclick="showAbaNovoLog()">Adicionar Novo Log</a>
+                
+                <a href="#dropdown_menu" id="F_item" class="dropdown_item" onclick="showAbaUploadFile()">Carregar Novos Projetos</a>
 
-                <a href="#dropdown_menu" class="dropdown_item" onclick="RemoveProject()">Remover Ultimo Projeto</a>
+                <a href="#dropdown_menu" id="download_item" class="dropdown_item" onclick="downloadAllFiles()">Baixar Todos os Projetos</a>
 
-                <a href="#dropdown_menu" id="download_item" class="dropdown_item" onclick="DownloadFiles()">Baixar Todos os Projetos</a>
-
-                <a href="#dropdown_menu" id="F_item" class="dropdown_item" onclick="MostrarAbaFiles()">Carregar Novos Projetos</a>
+                <a href="#dropdown_menu" id="DA_item" class="dropdown_item" onclick="removeAllProject()">Deletar Todos os Projetos</a>
                 
             </div>
         </div>
@@ -127,11 +137,11 @@
             <div id="hidden_F_div">
                 <span>Adicionar projetos: </span>
                 <div id="input_file_div">
-                    <input type="file" name="file_input" id="file_receiver" accept=".json" onchange="ReceiveFiles()">
+                    <input type="file" name="file_input" id="file_receiver" accept=".json" onchange="readFiles()">
                     <span for="file_input" id="file_label">carregar projetos</span>
                 </div>
                 <br>
-                <button id="add_file_button" disabled onclick="SubmitFiles()">adicionar</button>
+                <button id="add_file_button" disabled onclick="submitFiles()">adicionar</button>
             </div>
 
         </div>
@@ -147,7 +157,7 @@
 
                 <br>
                 <br>
-                <button id="create_project" onclick="CriaProjeto()">Criar projeto</button>
+                <button id="create_project" onclick="createNewProject()">Criar projeto</button>
                 <!-- <button id="remove_project" onclick="removeProjeto()">Remover projeto</button> -->
             </div>
 
@@ -157,7 +167,7 @@
                 <h2>Novo log</h2>
                 <br>
                 <textarea name="" id="log_area" placeholder="Descrição do log"></textarea>
-                <button onclick="CriaLog()">Criar log</button>
+                <button onclick="createNewLog()">Criar log</button>
             </div>
         
         </div>
@@ -167,8 +177,10 @@
         <a href="Duvidas.html" >Duvidas</a>
     </footer>
 
-    <script src="../js_styles/js/create.js"></script>
-    <script src="../js_styles/js/remove.js"></script>
-    <script src="../js_styles/js/update.js"></script>
+    <script src="../conf/js/create.js"></script>
+    <script src="../conf/js/remove.js"></script>
+    <script src="../conf/js/read.js"></script>
+    
 </body>
+
 </html>
