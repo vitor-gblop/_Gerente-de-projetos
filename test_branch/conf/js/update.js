@@ -32,7 +32,7 @@ function updateProjectDesc()
         ref.get(global_name).desc = x;
 
         updateGlobalJson(allToObj(ref));
-        location.reload();
+        getInfo();
     }
 }
 
