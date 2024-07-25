@@ -26,7 +26,8 @@ section
 {
    margin: 20px auto auto auto;
    background-color: var(--fundo_projeto);
-   width: 400px;
+   width: 50%;
+   width: 350px;
 
    padding: 10px;
    border-radius: 10px 10px 10px 10px;
@@ -157,4 +158,9 @@ span
 #hr_line
 {
     margin: 7px 0 7px 0;
+}
+
+@media (max-width: 600px)
+{
+
 }

@@ -105,10 +105,10 @@ function getInfo()
     }
 }
 
-// show abas
+// old show abas
 {
     // abre e fecha as abas do programa
-    aba_state = [1, 1, 0 ,0, 0, 0, 0];
+    let aba_state = [1, 1, 0 ,0, 0, 0, 0];
 
     function showAbaProjetos()
     {
@@ -125,51 +125,81 @@ function getInfo()
             aba_state[1] = 1
         }
     }
-    function showAbaNovoProjeto()
+    function showAbaNovoProjeto(t)
     {
-        if(aba_state[2] == 1)
+        if(t == 1)
         {
-            document.getElementById("hidden_NP_div").style.display = "none";
-            document.getElementById("NP_item").innerHTML = "Adicionar Novo Projeto"
-            aba_state[2] = 0
+            if(aba_state[2] == 1)
+            {
+                document.getElementById("hidden_NP_div").style.display = "none";
+                document.getElementById("NP_item").innerHTML = "Adicionar Novo Projeto"
+                aba_state[2] = 0
+            }
+            else
+            {
+                document.getElementById("hidden_NP_div").style.display = "block";
+                document.getElementById("NP_item").innerHTML = "Ocultar Aba Novo Projeto"
+                aba_state[2] = 1
+            }
         }
         else
         {
-            document.getElementById("hidden_NP_div").style.display = "block";
-            document.getElementById("NP_item").innerHTML = "Ocultar Aba Novo Projeto"
-            aba_state[2] = 1
+            document.getElementById("hidden_NP_div").style.display = "none";
+            document.getElementById("NP_item").innerHTML = "Adicionar Novo Projeto";
+            aba_state[2] = 0
         }
     }
-    function showAbaUploadFile()
+    function showAbaUploadFile(t)
     {
-        if (aba_state[3] == 0)
+        if (t == 1)
         {
-            document.getElementById("hidden_F_div").style.display = "block";
-            document.getElementById("F_item").innerHTML = "Cancelar Carregamento"
-            aba_state[3] = 1
+            if (aba_state[3] == 1)
+            {
+                document.getElementById("hidden_F_div").style.display = "none";
+                document.getElementById("F_item").innerHTML = "Carregar Novos Projetos"
+                
+                aba_state[3] = 0
+            }
+            else
+            {
+                document.getElementById("hidden_F_div").style.display = "block";
+                document.getElementById("F_item").innerHTML = "Cancelar Carregamento"
+                
+                aba_state[3] = 1
+            }
         }
         else
         {
             document.getElementById("hidden_F_div").style.display = "none";
-            document.getElementById("F_item").innerHTML = "Carregar Novos Projetos"
+            document.getElementById("F_item").innerHTML = "Cancelar Carregamento";
             aba_state[3] = 0
         }
         
     }
-    function showAbaNovoLog()
+    function showAbaNovoLog(t)
     {
-        if(aba_state[4] == 1)
+        if (t == 1)
         {
-            document.getElementById("hidden_LG_div").style.display = "none";
-            document.getElementById("LG_item").innerHTML = "Adicionar Novo Log"
-            aba_state[4] = 0
+            if(aba_state[4] == 1)
+            {
+                document.getElementById("hidden_LG_div").style.display = "none";
+                document.getElementById("LG_item").innerHTML = "Adicionar Novo Log"
+                aba_state[4] = 0
+            }
+            else
+            {
+                document.getElementById("hidden_LG_div").style.display = "block";
+                document.getElementById("LG_item").innerHTML = "Ocultar Aba Novo Log"
+                aba_state[4] = 1
+            }
         }
         else
         {
-            document.getElementById("hidden_LG_div").style.display = "block";
-            document.getElementById("LG_item").innerHTML = "Ocultar Aba Novo Log"
-            aba_state[4] = 1
+            document.getElementById("hidden_LG_div").style.display = "none";
+            document.getElementById("LG_item").innerHTML = "Adicionar Novo Log";
+            aba_state[4] = 0
         }
+            
     }
     function showHourInputs(t)
     {
@@ -204,6 +234,7 @@ function getInfo()
         }
     }
 }
+
 
 //downloads
 {

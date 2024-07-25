@@ -48,11 +48,14 @@ function createNewLog()
 {
     let log_value = document.getElementById("log_area").value
 
-    global_map.get(global_name).logs.push(log_value);
-    // console.log(global_map.get(global_name));
+    if (global_name != "none")
+    {
+        global_map.get(global_name).logs.push(log_value);
+        // console.log(global_map.get(global_name));
 
-    let obj = allToObj(global_map);
-    updateGlobalJson(obj)
+        let obj = allToObj(global_map);
+        updateGlobalJson(obj)
+    }
     location.reload()
 }
 
