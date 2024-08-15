@@ -5,6 +5,7 @@ function updateGlobalJson(obj)
     localStorage.setItem("projetos", JSON.stringify(obj));
 }
 
+// atualizar nome do projeto
 function updateProjectName()
 {
     let ref = global_map;
@@ -20,7 +21,7 @@ function updateProjectName()
     }
 }
     
-
+// atualizar descrição do projeto
 function updateProjectDesc()
 {
     let ref = global_map;
@@ -36,6 +37,7 @@ function updateProjectDesc()
     }
 }
 
+// atualizar project log
 function updateProjectLog()
 {
     let ref = global_map;

@@ -48,14 +48,18 @@ function createNewLog()
 {
     let log_value = document.getElementById("log_area").value
 
-    global_map.get(global_name).logs.push(log_value);
-    // console.log(global_map.get(global_name));
+    if (global_name != "none")
+    {
+        global_map.get(global_name).logs.push(log_value);
+        // console.log(global_map.get(global_name));
 
-    let obj = allToObj(global_map);
-    updateGlobalJson(obj)
+        let obj = allToObj(global_map);
+        updateGlobalJson(obj)
+    }
     location.reload()
 }
 
+// cria e salva um novo registro de hora relacionado ao projeto atual
 function createHourRegistry(t) 
 {
     let xy = document.getElementById("in_input_div");
@@ -92,12 +96,10 @@ function createHourRegistry(t)
             updateGlobalJson(obj);
         }
     }
-
-    console.log(ref.get(global_name).entrada);
     getInfo();
 }
 
-
+// auto invocação
 (function()
 {
     // localStorage.setItem("projetos", global_json)

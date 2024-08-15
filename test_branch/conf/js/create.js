@@ -59,6 +59,7 @@ function createNewLog()
     location.reload()
 }
 
+// cria e salva um novo registro de hora relacionado ao projeto atual
 function createHourRegistry(t) 
 {
     let xy = document.getElementById("in_input_div");
@@ -95,12 +96,10 @@ function createHourRegistry(t)
             updateGlobalJson(obj);
         }
     }
-
-    console.log(ref.get(global_name).entrada);
     getInfo();
 }
 
-
+// auto invocação
 (function()
 {
     // localStorage.setItem("projetos", global_json)

@@ -14,6 +14,17 @@
     <script src="../conf/js/update.js"></script>
 </head>
 <body>
+    <script>
+        
+    </script>
+    <style>
+        #ul_log li 
+        {
+            text-align: justify;
+            padding-right: 3em;
+        }
+    </style>
+
     <header>
         
     </header>
@@ -31,17 +42,17 @@
                         opcoes
                         <div id="info_menu" class="dropdown_menu">
                             <a href="#dropdown_menu" class="dropdown_item" onclick="showHourInputs(1)">Adicionar Horas</a>
-
+                            <hr>
                             <a href="#dropdown_menu" class="dropdown_item" onclick="showHourInputs(2)">Adicionar Saida</a>
-                            
+                            <hr>
                             <a href="#dropdown_menu" class="dropdown_item" onclick="updateProjectName()">Renomear Projeto</a> <!-- update-->
-                            
+                            <hr>
                             <a href="#dropdown_menu" class="dropdown_item" onclick="updateProjectDesc()">Mudar Descrição</a> <!-- update-->
-                            
+                            <hr>
                             <a href="#dropdown_menu" class="dropdown_item" onclick="updateProjectLog()">Atualizar Logs</a> <!-- update-->
-                            
+                            <hr>
                             <a href="#dropdown_menu" id="downloadIndex_item" class="dropdown_item" onclick="downloadIndexFile()">Baixar Projeto</a>
-
+                            <hr>
                             <a href="#dropdown_menu" id="remove_item" class="dropdown_item" onclick="removeProject()">Deletar Projeto</a>
 
                             <!-- <a href="#dropdown_menu" class="dropdown_item" onclick="removeProjeto()">remover projeto</a> -->
@@ -108,15 +119,15 @@
             opcoes
             <div id="mid_menu" class="dropdown_menu">
                 <a href="#hidden_PJ_div" id="PJ_item" class="dropdown_item" onclick="showAbaProjetos()">Mostrar Aba Projetos</a>
-
-                <a href="#hidden_NP_div" id="NP_item" class="dropdown_item" onclick="showAbaNovoProjeto()">Adicionar Novo Projeto</a>
-
-                <a href="#log_area" id="LG_item" class="dropdown_item" onclick="showAbaNovoLog()">Adicionar Novo Log</a>
-                
-                <a href="#dropdown_menu" id="F_item" class="dropdown_item" onclick="showAbaUploadFile()">Carregar Novos Projetos</a>
-
+                <hr>
+                <a href="#hidden_NP_div" id="NP_item" class="dropdown_item" onclick="showAbaNovoProjeto(1)">Adicionar Novo Projeto</a>
+                <hr>
+                <a href="#log_area" id="LG_item" class="dropdown_item" onclick="showAbaNovoLog(1)">Adicionar Novo Log</a>
+                <hr>
+                <a href="#dropdown_menu" id="F_item" class="dropdown_item" onclick="showAbaUploadFile(1)">Upload de Arquivos</a>
+                <hr>
                 <a href="#dropdown_menu" id="download_item" class="dropdown_item" onclick="downloadAllFiles()">Baixar Todos os Projetos</a>
-
+                <hr>
                 <a href="#dropdown_menu" id="DA_item" class="dropdown_item" onclick="removeAllProject()">Deletar Todos os Projetos</a>
                 
             </div>
@@ -142,6 +153,7 @@
                 </div>
                 <br>
                 <button id="add_file_button" disabled onclick="submitFiles()">adicionar</button>
+                <button id="add_file_cancel_button" onclick="showAbaUploadFile(2)">cancelar</button>
             </div>
 
         </div>
@@ -158,6 +170,7 @@
                 <br>
                 <br>
                 <button id="create_project" onclick="createNewProject()">Criar projeto</button>
+                <button id="create_project_cancel_button" onclick="showAbaNovoProjeto(2)">cancelar</button>
                 <!-- <button id="remove_project" onclick="removeProjeto()">Remover projeto</button> -->
             </div>
 
@@ -168,6 +181,7 @@
                 <br>
                 <textarea name="" id="log_area" placeholder="Descrição do log"></textarea>
                 <button onclick="createNewLog()">Criar log</button>
+                <button id="log_cancel_button" onclick="showAbaNovoLog(2)">cancelar</button>
             </div>
         
         </div>
@@ -178,8 +192,8 @@
     </footer>
 
     <script src="../conf/js/create.js"></script>
-    <script src="../conf/js/remove.js"></script>
     <script src="../conf/js/read.js"></script>
+    <script src="../conf/js/delete.js"></script>
     
 </body>
 

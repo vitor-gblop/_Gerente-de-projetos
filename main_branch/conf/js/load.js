@@ -46,11 +46,13 @@ function getInfo()
         loadHourEntries();
         loadLogsEntries();
         loadName_Description();
+        loadTimeSpent();
     }, 300); 
 }
 
 // carga de informação
 {
+    // carrega as entrdas e saidas
     function loadHourEntries() 
     {
         let ul_entrada = document.getElementById("ul_entrada")
@@ -80,6 +82,8 @@ function getInfo()
             ul_saida.innerHTML = _obj.saida.map(item => `<li> ${item} </li>`).join("")
         } 
     }
+
+    // carrega os logs
     function loadLogsEntries() 
     {
         let ul_log = document.getElementById("ul_log")
@@ -94,6 +98,7 @@ function getInfo()
             ul_log.innerHTML = _obj.logs.map(item => `<li> ${item} </li>`).join("")
         }
     }
+    // carrega o nome e a descrição
     function loadName_Description()
     {
         let x = document.getElementById("info_project_name");
@@ -105,10 +110,10 @@ function getInfo()
     }
 }
 
-// show abas
+// exibir abas
 {
     // abre e fecha as abas do programa
-    aba_state = [1, 1, 0 ,0, 0, 0, 0];
+    let aba_state = [1, 1, 0 ,0, 0, 0, 0];
 
     function showAbaProjetos()
     {
@@ -125,51 +130,81 @@ function getInfo()
             aba_state[1] = 1
         }
     }
-    function showAbaNovoProjeto()
+    function showAbaNovoProjeto(t)
     {
-        if(aba_state[2] == 1)
+        if(t == 1)
         {
-            document.getElementById("hidden_NP_div").style.display = "none";
-            document.getElementById("NP_item").innerHTML = "Adicionar Novo Projeto"
-            aba_state[2] = 0
+            if(aba_state[2] == 1)
+            {
+                document.getElementById("hidden_NP_div").style.display = "none";
+                document.getElementById("NP_item").innerHTML = "Adicionar Novo Projeto"
+                aba_state[2] = 0
+            }
+            else
+            {
+                document.getElementById("hidden_NP_div").style.display = "block";
+                document.getElementById("NP_item").innerHTML = "Ocultar Aba Novo Projeto"
+                aba_state[2] = 1
+            }
         }
         else
         {
-            document.getElementById("hidden_NP_div").style.display = "block";
-            document.getElementById("NP_item").innerHTML = "Ocultar Aba Novo Projeto"
-            aba_state[2] = 1
+            document.getElementById("hidden_NP_div").style.display = "none";
+            document.getElementById("NP_item").innerHTML = "Adicionar Novo Projeto";
+            aba_state[2] = 0
         }
     }
-    function showAbaUploadFile()
+    function showAbaUploadFile(t)
     {
-        if (aba_state[3] == 0)
+        if (t == 1)
         {
-            document.getElementById("hidden_F_div").style.display = "block";
-            document.getElementById("F_item").innerHTML = "Cancelar Carregamento"
-            aba_state[3] = 1
+            if (aba_state[3] == 1)
+            {
+                document.getElementById("hidden_F_div").style.display = "none";
+                document.getElementById("F_item").innerHTML = "Carregar Novos Projetos"
+                
+                aba_state[3] = 0
+            }
+            else
+            {
+                document.getElementById("hidden_F_div").style.display = "block";
+                document.getElementById("F_item").innerHTML = "Cancelar Carregamento"
+                
+                aba_state[3] = 1
+            }
         }
         else
         {
             document.getElementById("hidden_F_div").style.display = "none";
-            document.getElementById("F_item").innerHTML = "Carregar Novos Projetos"
+            document.getElementById("F_item").innerHTML = "Cancelar Carregamento";
             aba_state[3] = 0
         }
         
     }
-    function showAbaNovoLog()
+    function showAbaNovoLog(t)
     {
-        if(aba_state[4] == 1)
+        if (t == 1)
         {
-            document.getElementById("hidden_LG_div").style.display = "none";
-            document.getElementById("LG_item").innerHTML = "Adicionar Novo Log"
-            aba_state[4] = 0
+            if(aba_state[4] == 1)
+            {
+                document.getElementById("hidden_LG_div").style.display = "none";
+                document.getElementById("LG_item").innerHTML = "Adicionar Novo Log"
+                aba_state[4] = 0
+            }
+            else
+            {
+                document.getElementById("hidden_LG_div").style.display = "block";
+                document.getElementById("LG_item").innerHTML = "Ocultar Aba Novo Log"
+                aba_state[4] = 1
+            }
         }
         else
         {
-            document.getElementById("hidden_LG_div").style.display = "block";
-            document.getElementById("LG_item").innerHTML = "Ocultar Aba Novo Log"
-            aba_state[4] = 1
+            document.getElementById("hidden_LG_div").style.display = "none";
+            document.getElementById("LG_item").innerHTML = "Adicionar Novo Log";
+            aba_state[4] = 0
         }
+            
     }
     function showHourInputs(t)
     {
@@ -204,6 +239,7 @@ function getInfo()
         }
     }
 }
+
 
 //downloads
 {
@@ -251,6 +287,7 @@ function getInfo()
     {
         document.getElementById("file_label").innerHTML = fileName;
     }
+    // verifica se e possivel ler o json carregado
     function loadReceivedFiles(result)
     {
         document.getElementById("add_file_button").disabled = false;
@@ -271,6 +308,7 @@ function getInfo()
         }       
     }
 
+    // chamada ao apertar 'upload' atualiza o map com os projetos selecionados
     function submitFiles()
     {
         updateGlobalJson(allToObj(global_map));
@@ -278,6 +316,7 @@ function getInfo()
     }
 }
 
+// estetica garante que os botoes da area de 
 function securityCheck()
 {
     if (global_name == "none")
@@ -328,6 +367,121 @@ function securityCheck()
         }
 
         return obj;
+    }
+}
+
+// carregar horas gastas
+// carregar horas gastas
+{
+    function loadTimeSpent() 
+    {
+        document.getElementById("time_spent").innerHTML = "00:00";
+
+        let hr_entrada = document.getElementById("ul_entrada").children;
+        let hr_saida = document.getElementById("ul_saida").children;
+
+        let arr_ent = Array.from(hr_entrada);
+        let arr_sai = Array.from(hr_saida);
+        let res = [];
+        
+        console.log(arr_sai.length)
+        // itera pelo o tamanho do arr de saida
+        if (arr_sai.length > 0)
+        {
+            for (let i = 0; i < arr_sai.length; i++) 
+            {
+                let a = arr_ent[i].innerText.toString();
+                let b = arr_sai[i].innerText.toString();
+                
+                res.push(diffTime(a, b));
+            }
+
+            
+            let tmp_gasto = "00:00";
+            let tmp_soma = "00:00";
+            let last_tmp = "00:00";
+            if (res.length > 1)
+            {
+                for (let i = 0; i < res.length; i++) 
+                {
+                    let tratarData = (str = "") =>
+                    {
+                        let ax = str.replace("h", "")
+                        ax = ax.replace("m", "");
+
+                        return ax;
+                    }
+
+                    a = res[i].slice(0,5);
+                    tmp_soma = sumTime(tratarData(tmp_soma), a);
+                    tmp_gasto = tmp_soma
+                }
+            }
+            else
+            {
+                let a = arr_ent[0].innerText.toString();
+                let b = arr_sai[0].innerText.toString();
+
+                let x = diffTime(a, b);
+                let y = x.split(":");
+
+                // console.log(y);
+
+                let time_f = y[0] + "h:" + y[1] + "m";
+                tmp_gasto = time_f
+            }
+            document.getElementById("time_spent").innerHTML = tmp_gasto;
+        }
+    }
+
+    let diffTime = (ini_ = "", fim_ = "") => {
+        let inicio_d = new Date("2022-02-20T"+ini_+":00");
+        let fim_d = new Date("2022-02-20T"+fim_+":00");
+
+        let diferenca = new Date( fim_d - inicio_d );
+
+        let h = diferenca.getUTCHours();
+        let m = diferenca. getUTCMinutes();
+
+        if (m > 59)
+        {
+            h += 1;
+            m = m % 60;
+        }
+        let resultado = (h < 10) ? `0${h}:` : `${h}:`;
+        resultado += (m < 10) ? `0${m}` : `${m}`;
+        
+        // if (diferenca.getUTCMinutes() < 10)
+        // {
+        //     resultado +=  "0" + diferenca.getUTCMinutes();
+        // }
+        // else
+        // {
+        //     resultado +=  diferenca.getUTCMinutes();
+        // }
+        
+
+        console.log("diff -- " + resultado);
+        return resultado;
+    }
+
+    let sumTime = (ini_ = "", fim_ = "") => {
+        let entrada = new Date("2022-02-20T"+ini_+":00");
+        let saida = new Date("2022-02-20T"+fim_+":00");
+
+        let h =  entrada.getHours() + saida.getHours();
+        let m = entrada.getMinutes() + saida.getMinutes();
+
+        if (m > 59)
+        {
+            h += 1;
+            m = m % 60;
+        }
+        let resultado = (h < 10) ? `0${h}h:` : `${h}h:`;
+        resultado += (m < 10) ? `0${m}m` : `${m}m`;
+        
+        console.log("sum -- "+resultado);
+        return resultado;
     }
 }
 // global_map.set("teste original", {"nome": ["eudes"]});
