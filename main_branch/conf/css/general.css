@@ -12,8 +12,8 @@
 
    --escala_1: #ebebeb;
    --escala_2: #242424;
-   --escala_c1: #78c4ce;
-   --escala_c2: #c7b753;
+   --escala_c1: #f5f5f5;
+   --escala_c2: #e6e6e6;
    
 
    --fundo_monocromatico: #f7f7f7;
@@ -21,6 +21,7 @@
 body
 {
    background-color: #f4f4f4;
+   color: #1f1f1f;
 }
 section
 {
@@ -44,10 +45,37 @@ footer
 span
 {
    margin-top: 5px;
+   margin-bottom: 6px;
    display: inline-flex;
    width: 150px;
 }
 
+div button
+{
+   padding: 0.6em;
+   border-radius: 10px;
+   border: 0.5px solid #dbdbdb;
+   box-shadow: -1px 1px 6px 0px #00000020;
+}
+div button:active
+{
+   background-color: #e4e4e4;
+}
+
+div input
+{
+   width: 60%;
+   padding: 10px;
+   margin-bottom: 5px;
+   border-radius: 10px;
+   border: 0.5px solid #dbdbdb;
+}
+
+
+#ul_log li
+{
+   margin-bottom: 3px;
+}
  
 
  
@@ -66,15 +94,17 @@ span
    padding: 10px;
    background-color: var(--fundo_monocromatico);
    border-radius: 10px;
+
+   display: none;
 }
 #in_and_out_div
 {
    display: flex;
    justify-content: space-around;
 
-   padding-bottom: 5px;
-   border-bottom: 1px solid gray;
-   border-top: 1px solid gray;
+   padding: 10px 0 10px 0;
+   border-bottom: 1px solid #a8a8a8;
+   border-top: 1px solid #a8a8a8;
 }
 
 #add_in_add_out_div
@@ -82,7 +112,6 @@ span
    margin: 8px auto auto auto;
    padding: 2px;
    width: 70%;
-   background-color: var(--fundo_projeto);
 
    /* display: none; */
     display: flex;
@@ -149,14 +178,15 @@ span
    /* border-right: 2px solid #5f5f5f;
    border-left: 2px solid #5f5f5f; */
    border-radius: 15px;
+   border: 0.5px solid #dbdbdb;
+   box-shadow: 0px 7px 10px 0px #00000020;
 
-   transition: 0.25s;
-   overflow-y: auto;
+   transition: 0.1s;
 }
 #project_b:hover
 {
-   transform: scale(101%);
-   /* background-color: var(--escala_c2); */
+   /* transform: scale(101%); */
+   background-color: var(--escala_c2);
 }
 
 #hr_line
@@ -166,5 +196,16 @@ span
 
 @media (max-width: 600px)
 {
-
+   section
+   {
+      margin-top: 0;
+   }
+   #add_in_add_out_div
+   {
+      gap: 3px;
+   }
+   #add_in_add_out_div button
+   {
+      padding: 4px;
+   }
 }

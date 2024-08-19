@@ -9,6 +9,8 @@
         <link rel="stylesheet" href="../conf/css/general.css">
         <link rel="stylesheet" href="../conf/css/inputs.css">
         <link rel="stylesheet" href="../conf/css/dropdown.css">
+        
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     </div>
     <script src="../conf/js/load.js"></script>
     <script src="../conf/js/update.js"></script>
@@ -22,6 +24,17 @@
         {
             text-align: justify;
             padding-right: 3em;
+        }
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+        .material-symbols-outlined{
+            position: relative;
+            top: 6px;
         }
     </style>
 
@@ -39,21 +52,49 @@
                     
                 <div id="hidden_D_div">
                     <div id="info_dropdown" class="dropdown_button">
-                        opcoes
+                        Opções
                         <div id="info_menu" class="dropdown_menu">
-                            <a href="#dropdown_menu" class="dropdown_item" onclick="showHourInputs(1)">Adicionar Horas</a>
+                            
+                            <a href="#dropdown_menu" class="dropdown_item" onclick="showHourInputs(1)">
+                                <i class="material-symbols-outlined">schedule</i>
+                                Adicionar Horas
+                            </a>
                             <hr>
-                            <a href="#dropdown_menu" class="dropdown_item" onclick="showHourInputs(2)">Adicionar Saida</a>
+
+                            <a href="#dropdown_menu" class="dropdown_item" onclick="showHourInputs(2)">
+                                <i class="material-symbols-outlined">schedule</i>
+                                Adicionar Saida
+                            </a>
                             <hr>
-                            <a href="#dropdown_menu" class="dropdown_item" onclick="updateProjectName()">Renomear Projeto</a> <!-- update-->
+
+                            <a href="#dropdown_menu" class="dropdown_item" onclick="updateProjectName()">
+                                <i class="material-symbols-outlined">edit</i>
+                                Renomear Projeto
+                            </a> <!-- update-->
                             <hr>
-                            <a href="#dropdown_menu" class="dropdown_item" onclick="updateProjectDesc()">Mudar Descrição</a> <!-- update-->
+
+                            <a href="#dropdown_menu" class="dropdown_item" onclick="updateProjectDesc()">
+                                <i class="material-symbols-outlined">edit</i>
+                                Mudar Descrição
+                            </a> <!-- update-->
                             <hr>
-                            <a href="#dropdown_menu" class="dropdown_item" onclick="updateProjectLog()">Atualizar Logs</a> <!-- update-->
+
+                            <a href="#dropdown_menu" class="dropdown_item" onclick="updateProjectLog()">
+                                <i class="material-symbols-outlined">edit</i>
+                                Atualizar Logs
+
+                            </a> <!-- update-->
                             <hr>
-                            <a href="#dropdown_menu" id="downloadIndex_item" class="dropdown_item" onclick="downloadIndexFile()">Baixar Projeto</a>
+                            <a href="#dropdown_menu" id="downloadIndex_item" class="dropdown_item" onclick="downloadIndexFile()">
+                                <i class="material-symbols-outlined">download</i>
+                                Baixar Projeto
+                            </a>
                             <hr>
-                            <a href="#dropdown_menu" id="remove_item" class="dropdown_item" onclick="removeProject()">Deletar Projeto</a>
+
+                            <a href="#dropdown_menu" id="remove_item" class="dropdown_item" onclick="removeProject()">
+                                <i class="material-symbols-outlined">delete</i>
+                                Deletar Projeto
+                            </a>
 
                             <!-- <a href="#dropdown_menu" class="dropdown_item" onclick="removeProjeto()">remover projeto</a> -->
                     
@@ -116,19 +157,31 @@
         </div>
 
         <div id="mid_dropdown" class="dropdown_button">
-            opcoes
+            Opções
             <div id="mid_menu" class="dropdown_menu">
-                <a href="#hidden_PJ_div" id="PJ_item" class="dropdown_item" onclick="showAbaProjetos()">Mostrar Aba Projetos</a>
+                <a href="#hidden_PJ_div" id="PJ_item" class="dropdown_item" onclick="showAbaProjetos()">
+                    <i class="material-symbols-outlined">add</i>
+                    Mostrar Aba Projetos</a>
                 <hr>
-                <a href="#hidden_NP_div" id="NP_item" class="dropdown_item" onclick="showAbaNovoProjeto(1)">Adicionar Novo Projeto</a>
+                <a href="#hidden_NP_div" id="NP_item" class="dropdown_item" onclick="showAbaNovoProjeto(1)">
+                    <i class="material-symbols-outlined">add</i>
+                    Adicionar Novo Projeto</a>
                 <hr>
-                <a href="#log_area" id="LG_item" class="dropdown_item" onclick="showAbaNovoLog(1)">Adicionar Novo Log</a>
+                <a href="#log_area" id="LG_item" class="dropdown_item" onclick="showAbaNovoLog(1)">
+                    <i class="material-symbols-outlined">add</i>
+                    Adicionar Novo Log</a>
                 <hr>
-                <a href="#dropdown_menu" id="F_item" class="dropdown_item" onclick="showAbaUploadFile(1)">Upload de Arquivos</a>
+                <a href="#dropdown_menu" id="F_item" class="dropdown_item" onclick="showAbaUploadFile(1)">
+                    <i class="material-symbols-outlined">upload</i>
+                    Upload de Arquivos</a>
                 <hr>
-                <a href="#dropdown_menu" id="download_item" class="dropdown_item" onclick="downloadAllFiles()">Baixar Todos os Projetos</a>
+                <a href="#dropdown_menu" id="download_item" class="dropdown_item" onclick="downloadAllFiles()">
+                    <i class="material-symbols-outlined">download</i>
+                    Baixar Todos os Projetos</a>
                 <hr>
-                <a href="#dropdown_menu" id="DA_item" class="dropdown_item" onclick="removeAllProject()">Deletar Todos os Projetos</a>
+                <a href="#dropdown_menu" id="DA_item" class="dropdown_item" onclick="removeAllProject()">
+                    <i class="material-symbols-outlined">delete</i>
+                    Deletar Todos os Projetos</a>
                 
             </div>
         </div>
@@ -191,6 +244,7 @@
         <a href="Duvidas.html" >Duvidas</a>
     </footer>
 
+    <script src="../conf/js/_time.js"></script>
     <script src="../conf/js/create.js"></script>
     <script src="../conf/js/read.js"></script>
     <script src="../conf/js/delete.js"></script>

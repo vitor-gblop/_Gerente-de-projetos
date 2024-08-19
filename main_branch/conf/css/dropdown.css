@@ -10,6 +10,9 @@
     /*<<*/
     padding: 9px;
     border-radius: 5px;
+
+    border: 0.5px solid #dbdbdb;
+    box-shadow: -1px 1px 20px 0px #00000020;
 }
 
 #info_dropdown {
@@ -24,6 +27,8 @@
     top: 1em;
     left: 80%;
     width: fit-content;
+
+    
 }
 
 .dropdown_menu {
@@ -41,11 +46,11 @@
 }
 
 #info_menu {
-    width: 11em;
+    width: 15em;
 }
 
 #mid_menu {
-    width: 15em;
+    width: 17em;
 }
 
 .dropdown_item {
@@ -76,15 +81,16 @@
 {
     #info_menu {
         top: 3.2em;
-        left: -106px;
+        left: -150px;
 
         padding: 0 1em 0 1em;
     }
     
     #mid_menu {
         top: 3.2em;
-        left: -166px;
+        left: -170px;
 
         padding: 0 1em 0 1em;
     }
+    
 }
