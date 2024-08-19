@@ -2,4 +2,4 @@
 Uma aplicação web para gerenciar horas gastas em projetos e outras funcionalides
 
 link pages:
-https://vitor-gblop.github.io/_Gerente-de-projetos/test_branch/pages/Index
+https://vitor-gblop.github.io/_Gerente-de-projetos/main_branch/pages/Index
