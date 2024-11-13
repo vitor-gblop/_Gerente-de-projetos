@@ -5,4 +5,4 @@ Usa forma de salvamento dos projetos local, atraves de local-storage. Conta com 
 ## Os projetos são baixados em formato json.
 
 link pages:
-https://vitor-gblop.github.io/_Gerente-de-projetos/main_branch/pages/Index
+https://vitor-gblop.github.io/_Gerente-de-projetos/main/pages/Index
